@@ -7,9 +7,11 @@ $(document).ready(function (){
         event.preventDefault();
         const todo = $('.template--todo').children().clone();
         $('.todos').prepend(todo);
-
+        
         createInput(todo.children('.text'));
         saveTodo();
+        deleteTodo();
+        dropdown();
 
     });
 
@@ -59,8 +61,34 @@ $(document).ready(function (){
       }
     });
   }
+  function deleteTodo() {
+    $(document).on('click', '.button-todo--delete', function (){
+      $(this).parents('.todos__item').remove();
+    });
+  }
+  function dropdown() {
+    //traversing
+    $(document).on('click','.other-items', function () {
+      $(this).parent('.todo__item__menu').toggleClass('active');
+      $(this).next('.todo__item__menu__dropdown').toggleClass('active');
+    });
+  
+    /* ARE WE IN DROPDOWN AREA??? */
+
+    $(document).on('mouseup', function(event){
+      const isOnDropDown = $(event.target).parents('.todo__item__menu').hasClass('active') || $(event.target).parents('.todo__item__menu__dropdown').hasClass('active')
+
+      if(!isOnDropDown) {
+        $('.todo__item__menu').removeClass('active');
+        $('.todo__item__menu__dropdown').removeClass('active');
+      }
+    });
+  }
+  
+  
   
  
   /* 2 read */
   /* 3 update */
   /* 4 delete */
+
