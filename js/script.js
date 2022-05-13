@@ -12,6 +12,7 @@ $(document).ready(function (){
         saveTodo();
         deleteTodo();
         dropdown();
+        doneTodo();
 
     });
 
@@ -61,11 +62,13 @@ $(document).ready(function (){
       }
     });
   }
+
   function deleteTodo() {
     $(document).on('click', '.button-todo--delete', function (){
       $(this).parents('.todos__item').remove();
     });
   }
+
   function dropdown() {
     //traversing
     $(document).on('click','.other-items', function () {
@@ -85,6 +88,20 @@ $(document).ready(function (){
     });
   }
   
+  function doneTodo() {
+    $(document).on('click', '.button--done', function (){
+      const parent = $(this).parents('.todos__item');
+      const todosContainer = $(this).parents('.todos');
+
+      if(parent.hasClass('todo--done')) {
+        parent.removeClass('todo--done');
+        todosContainer.prepend(parent);
+      }else {
+        parent.addClass('todo--done');
+        todosContainer.append(parent);
+      }
+    });
+  }
   
   
  
