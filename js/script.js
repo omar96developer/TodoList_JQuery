@@ -14,6 +14,7 @@ $(document).ready(function (){
         dropdown();
         doneTodo();
         updateTodo();
+        searchTodo();
 
     });
 
@@ -118,6 +119,48 @@ $(document).ready(function (){
       $(this).parents('.todo__item__menu__dropdown').removeClass('active');
       $(this).parents('.todo__item__menu').removeClass('active');
       
+    });
+  }
+
+  function searchTodo() {
+    const search = $('.header__search');
+
+    search.on({
+      'click' : function() {
+        $(this).addClass('active').children('.search').focus();
+      },
+      'focusout' : function() {
+        $(this).removeClass('active');
+      }
+    });
+
+    search.children('.search').on('keyup', function (){
+      const text = $(this).val().toLowerCase();
+      const todos = $('.todos .todos__item');
+
+      todos.each(function (index) {
+        const textTodo = $(this).find('.todo__text');
+        const textTodoValue = textTodo.text();
+        const position = textTodoValue.toLowerCase().indexOf(text);
+        
+
+        if(position !== -1){
+          $(this).removeClass('hidden');
+          const before = textTodoValue.slice(0, position);
+          const after = textTodoValue.slice(position + text.length );
+          const textToHighlight = textTodoValue.slice(position, position + text.length);
+          console.log(before);
+          console.log(after);
+          console.log(textToHighlight);
+
+          const newText = `${before}<span class='highlights'>${textToHighlight}</span>${after}`; 
+
+          textTodo.html(newText);
+        } else {
+          $(this).addClass('hidden');
+        }
+
+      });
     });
   }
   
