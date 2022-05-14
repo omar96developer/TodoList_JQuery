@@ -13,6 +13,7 @@ $(document).ready(function (){
         deleteTodo();
         dropdown();
         doneTodo();
+        updateTodo();
 
     });
 
@@ -103,6 +104,22 @@ $(document).ready(function (){
     });
   }
   
+  function updateTodo() {
+    $(document).on('dblclick', '.todos__item .text', function () {
+      const todoText = $(this);
+      if(!todoText.parents('.todos__item').hasClass('.todo--done')){
+        createInput(todoText);
+      }
+    });
+
+    $(document).on('click', '.button-todo--modify', function (){
+      const todoText = $(this).parents('.todos__item').children('.text');
+      createInput(todoText);
+      $(this).parents('.todo__item__menu__dropdown').removeClass('active');
+      $(this).parents('.todo__item__menu').removeClass('active');
+      
+    });
+  }
   
  
   /* 2 read */
