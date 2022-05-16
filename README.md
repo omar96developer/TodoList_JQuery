@@ -7,9 +7,10 @@ I had alredy create a todolist with Vuejs but considering that i begun to learn 
 I hope you can apreciate my work.  
 Enjoy 😃
 
+
 ## Demo
 
-Insert gif or link to demo
+https://user-images.githubusercontent.com/84162621/168568674-8d167cbf-635d-4984-afbc-76321265a16c.mp4
 
 
 ## Run Locally
