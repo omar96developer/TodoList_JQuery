@@ -17,8 +17,10 @@ https://user-images.githubusercontent.com/84162621/168568674-8d167cbf-635d-4984-
 
 Clone the project
 
+Git clone
+
 ```bash
-  git clone https://github.com/omar96developer/TodoList_JQuery.git
+https://github.com/omar96developer/TodoList_JQuery.git
 ```
 
 
